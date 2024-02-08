@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -19,8 +19,12 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any authentication / authorization services.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        $this->registerPolicies();
+
+        Validator::extend('username', function ($attribute, $value, $parameters, $validator) {
+            return preg_match('/^[a-z0-9]+$/', $value);
+        });
     }
 }
