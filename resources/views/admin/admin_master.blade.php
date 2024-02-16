@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
+
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('backend/images/favicon.ico') }}">
 
@@ -27,6 +28,10 @@
         <!-- App Css-->
         <link href="{{ asset('backend/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" >
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+
     </head>
 
     <body data-topbar="dark">
@@ -36,9 +41,12 @@
         <!-- Begin page -->
         <div id="layout-wrapper">
 
-            @extends('admin.components.header')
 
-            @extends('admin.components.sidebar')
+          @include('admin.components.header')
+
+            <!-- ========== Left Sidebar Start ========== -->
+           @include('admin.components.sidebar')
+            <!-- Left Sidebar End -->
 
 
 
@@ -47,11 +55,11 @@
             <!-- ============================================================== -->
             <div class="main-content">
 
-                @yield('content')
-
+               @yield('content')
                 <!-- End Page-content -->
 
-                @extends('admin.components.footer')
+                @include('admin.components.footer')
+
 
             </div>
             <!-- end main content-->
@@ -59,13 +67,15 @@
         </div>
         <!-- END layout-wrapper -->
 
-        @extends('admin.components.right_sidebar')
+        <!-- Right Sidebar -->
+
+        <!-- /Right-bar -->
 
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        {{-- <script src="{{ asset('backend/libs/jquery/jquery.min.js') }}"></script> --}}
+        <script src="{{ asset('backend/libs/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('backend/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('backend/libs/metismenu/metisMenu.min.js') }}"></script>
         <script src="{{ asset('backend/libs/simplebar/simplebar.min.js') }}"></script>
@@ -91,6 +101,55 @@
 
         <!-- App js -->
         <script src="{{ asset('backend/js/app.js') }}"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+ @if(Session::has('message'))
+ var type = "{{ Session::get('alert-type','info') }}"
+ switch(type){
+    case 'info':
+    toastr.info(" {{ Session::get('message') }} ");
+    break;
+
+    case 'success':
+    toastr.success(" {{ Session::get('message') }} ");
+    break;
+
+    case 'warning':
+    toastr.warning(" {{ Session::get('message') }} ");
+    break;
+
+    case 'error':
+    toastr.error(" {{ Session::get('message') }} ");
+    break;
+ }
+ @endif
+</script>
+
+        <!--tinymce js-->
+        <script src="{{ asset('backend/libs/tinymce/tinymce.min.js') }} "></script>
+
+        <!-- init js -->
+        <script src="{{ asset('backend/js/pages/form-editor.init.js') }} "></script>
+
+         <!-- Required datatable js -->
+        <script src="{{ asset('backend/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('backend/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+
+            <!-- Datatable init js -->
+        <script src="{{ asset('backend/js/pages/datatables.init.js') }}"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+ <script src="{{ asset('backend/js/code.js') }}"></script>
+ <script src="{{ asset('backend/js/validate.min.js') }}"></script>
+
+
+<script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
+
     </body>
 
 </html>
