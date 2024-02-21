@@ -1,6 +1,26 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
+
+        <div>
+            <x-input-label for="image" :value="__('Profile Image')" style="color: white;" />
+            <input id="image" name="image" type="file" class="mt-1 block w-full" accept="image/*" required onchange="previewImage(event)" style="color: white;"/>
+            <img id="imagePreview" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 200px;" />
+            <x-input-error class="mt-2" :messages="$errors->get('image')" />
+        </div>
+
+        <script>
+            function previewImage(event) {
+                var input = event.target;
+                var preview = document.getElementById('imagePreview');
+                preview.style.display = 'block';
+                var reader = new FileReader();
+                reader.onload = function() {
+                    preview.src = reader.result;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        </script>
 
         <!-- Name -->
         <div>
