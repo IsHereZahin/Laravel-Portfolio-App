@@ -31,9 +31,14 @@
                                             <li><a href="contact.html">contact me</a></li>
                                         </ul>
                                     </div>
+
                                     <div class="header__btn d-none d-md-block">
-                                        <a href="contact.html" class="btn">Contact me</a>
+                                        <a href="#" class="btn">Contact me</a>
+                                        @if(Auth::check())
+                                        <a href="{{ route('dashboard') }}" class="btn">Dashboard</a>
+                                        @endif
                                     </div>
+
                                 </nav>
                             </div>
                             <!-- Mobile Menu  -->
