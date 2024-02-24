@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\ForntendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend/index');
 });
+Route::controller(ForntendController::class)->group(function() {
+    Route::get('', 'index')->name('index');
+
+});
+
 
 
 Route::middleware(['auth', 'verified'])->group(function() {

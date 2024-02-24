@@ -25,16 +25,16 @@ class HeroController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'title'       => 'required',
-            'short_title' => 'required',
-            'button_name' => 'required',
-            'button_link' => 'required',
-            'video_url'   => 'required',
-            'hero_image'  => 'image|mimes:png,jpg', // removed 'required' from hero_image
+            'title'       => 'nullable',
+            'short_title' => 'nullable',
+            'button_name' => 'nullable',
+            'button_link' => 'nullable',
+            'video_url'   => 'nullable',
+            'hero_image'  => 'image|mimes:png,jpg',
         ]);
 
-        // Fetch the first record from Hero table
-        $hero = Hero::first();
+        // Fetch or create a record in the Hero table
+        $hero = Hero::firstOrNew();
 
         // Check if hero_image is present in the request
         if ($request->hasFile('hero_image')) {
@@ -51,8 +51,8 @@ class HeroController extends Controller
             $image = $hero->hero_image;
         }
 
-        // Update the Hero data with the new image filename
-        $hero->update([
+        // Update or create the record with the provided data
+        $hero->updateOrCreate([], [
             'title'       => $request->title,
             'short_title' => $request->short_title,
             'button_name' => $request->button_name,

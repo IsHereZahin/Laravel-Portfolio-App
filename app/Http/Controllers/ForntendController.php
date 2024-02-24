@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hero;
 use Illuminate\Http\Request;
 
 class ForntendController extends Controller
@@ -11,7 +12,8 @@ class ForntendController extends Controller
      */
     public function index()
     {
-        //
+        $hero = Hero::first();
+        return view('frontend.index', compact('hero'));
     }
 
     /**
