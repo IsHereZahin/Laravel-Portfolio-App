@@ -35,7 +35,7 @@
                                     <div class="header__btn d-none d-md-block">
                                         <a href="#" class="btn">Contact me</a>
                                         @if(Auth::check())
-                                        <a href="{{ route('dashboard') }}" class="btn">Dashboard</a>
+                                        <a href="{{ route('dashboard') }}" class="btn" target="blank">Dashboard</a>
                                         @endif
                                     </div>
 
