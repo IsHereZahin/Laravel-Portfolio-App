@@ -66,7 +66,7 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-10">
-                                    <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($hero->hero_image))? url('upload/index/hero/'.$hero->hero_image):url('images/no_image.jpg') }}" alt="Current Profile Image">
+                                    <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($hero->hero_image))? url('upload/index/hero/'.$hero->hero_image):url('images/no_image.jpg') }}" alt="Current Hero Image">
                                 </div>
                             </div>
                             <!-- end row -->
