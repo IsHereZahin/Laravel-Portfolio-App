@@ -16,7 +16,7 @@ class HeroController extends Controller
     public function edit()
     {
         $hero = Hero::first();
-        return view('admin.home.index.edit', compact('hero'));
+        return view('admin.home.index.hero', compact('hero'));
     }
 
     /**
