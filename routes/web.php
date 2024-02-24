@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,12 @@ Route::middleware(['auth', 'verified'])->group(function() {
         return view('admin.index');
     })->name('dashboard');
 
+    // Hero Route
+    Route::controller(HeroController::class)->group(function() {
+        Route::get('/hero/edit', 'edit')->name('hero.edit');
+        Route::post('/hero/update', 'update')->name('hero.update');
+        Route::delete('/hero/delete', 'destroy')->name('admin.hero.destroy');
+    });
 
 });
 
