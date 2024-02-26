@@ -44,6 +44,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('home.about.edit') }}">About Page</a></li>
+                        <li><a href="{{ route('about.multi-image.index') }}">About Multi Image</a></li>
                     </ul>
                 </li>
 
