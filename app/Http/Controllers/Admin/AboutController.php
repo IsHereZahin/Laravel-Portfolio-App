@@ -47,7 +47,7 @@ class AboutController extends Controller
     public function edit()
     {
         $about = About::first();
-        return view('admin.about.home_about', compact('about'));
+        return view('admin.about.about', compact('about'));
     }
 
     /**
@@ -61,10 +61,28 @@ class AboutController extends Controller
             'button_name'       => 'nullable',
             'button_url'        => 'nullable',
             'short_description' => 'nullable',
+            'long_description'  => 'nullable',
+            'image'             => 'image|mimes:png,jpg',
         ]);
 
         // Find the first About record or create a new instance
         $about = About::firstOrNew();
+
+        // Check if image is present in the request
+        if ($request->hasFile('image')) {
+            // Generate a unique filename for the image
+            $image = time().'.'.$request->image->extension();
+            // Move the uploaded image to the specified directory
+            $request->image->move(public_path('upload/about/index'), $image);
+            // Delete the old image if it exists
+            if (!empty($about->image) && File::exists(public_path('upload/about/index/'.$about->image))) {
+                File::delete(public_path('upload/about/index/'.$about->image));
+            }
+        } else {
+            // If no new image is uploaded, keep the existing image filename
+            $image = $about->image;
+        }
+
 
         // Update the record with the provided data
         $about->fill([
@@ -73,6 +91,8 @@ class AboutController extends Controller
             'button_name'       => $request->button_name,
             'button_url'        => $request->button_url,
             'short_description' => $request->short_description,
+            'long_description'  => $request->long_description,
+            'image'             => $image,
         ]);
 
         // Save the changes to the database

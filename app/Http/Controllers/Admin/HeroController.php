@@ -63,7 +63,7 @@ class HeroController extends Controller
 
         // Success notification
         $notification = [
-            'message'    => 'Hero Data Updated Successfully',
+            'message'    => 'Your request is complete',
             'alert-type' => 'info',
         ];
 
