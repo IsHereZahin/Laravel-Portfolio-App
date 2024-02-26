@@ -38,18 +38,18 @@
                     <div class="about__content">
                         <div class="section__title">
                             <span class="sub-title">01 - About me</span>
-                            <h2 class="title">I have transform your ideas into remarkable digital products</h2>
+                            <h2 class="title">{{ $about->title ?? 'I have transform your ideas into remarkable digital products' }}</h2>
                         </div>
                         <div class="about__exp">
                             <div class="about__exp__icon">
                                 <img src="{{ asset('frontend/assets/img/icons/about_icon.png') }}" alt="">
                             </div>
                             <div class="about__exp__content">
-                                <p>20+ Years Experience In this game, Means <br> Product Designing</p>
+                                <p>{{ $about->short_title ?? '20+ Years Experience In this game, Means Product Designing' }}</p>
                             </div>
                         </div>
-                        <p class="desc">I love to work in User Experience & User Interface designing. Because I love to solve the design problem and find easy and better solutions to solve it. I always try my best to make good user interface with the best user experience. I have been working as a UX Designer</p>
-                        <a href="about.html" class="btn">Download my resume</a>
+                        <p class="desc">{{ $about->short_description ?? 'I love to work in User Experience & User Interface designing. Because I love to solve the design problem and find easy and better solutions to solve it. I always try my best to make good user interface with the best user experience. I have been working as a UX Designer' }}</p>
+                        <a href="{{ $about->button_url ?? '#' }}" class="btn">{{ $about->button_name ?? 'Download my resume' }}</a>
                     </div>
                 </div>
             </div>
