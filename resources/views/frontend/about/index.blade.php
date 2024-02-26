@@ -40,7 +40,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6">
                                 <div class="about__image">
-                                    @if($about->image)
+                                    @if($about && $about->image)
                                         <img src="{{ asset('upload/about/index/' . $about->image) }}" alt="">
                                     @else
                                         <img src="{{ asset('frontend/assets/img/images/about_img.png') }}" alt="">
@@ -90,7 +90,7 @@
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
                                         <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
-                                            @if($about->long_description)
+                                            @if($about && $about->long_description)
                                                 <p class="desc"> {!! $about->long_description !!} </p>
                                             @else
                                                 <p class="desc">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of lorem ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the lorem ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated lorem ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
@@ -109,7 +109,7 @@
                                                     </li>
                                                 </ul>
                                             @endif
-                                            
+
                                         </div>
                                         <div class="tab-pane fade" id="skills" role="tabpanel" aria-labelledby="skills-tab">
                                             <div class="about__skill__wrap">
