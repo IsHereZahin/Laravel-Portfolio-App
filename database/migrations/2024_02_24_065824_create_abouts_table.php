@@ -16,8 +16,8 @@ return new class extends Migration
             $table->text('image')->nullable();
             $table->string('title')->nullable();
             $table->string('short_title')->nullable();
-            $table->string('short_description')->nullable();
-            $table->string('long_description')->nullable();
+            $table->text('short_description')->nullable();
+            $table->text('long_description')->nullable();
             $table->string('button_name')->nullable();
             $table->string('button_url')->nullable();
             $table->timestamps();

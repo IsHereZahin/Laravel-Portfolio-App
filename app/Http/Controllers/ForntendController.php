@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Hero;
 use Illuminate\Http\Request;
 
@@ -13,15 +14,17 @@ class ForntendController extends Controller
     public function index()
     {
         $hero = Hero::first();
-        return view('frontend.index', compact('hero'));
+        $about = About::first();
+        return view('frontend.index', compact('hero', 'about'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function about()
     {
-        //
+        $about = About::first();
+        return view('frontend.about.index', compact('about'));
     }
 
     /**
