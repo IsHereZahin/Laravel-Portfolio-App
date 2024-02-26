@@ -47,13 +47,6 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::post('/home/about/update', 'update')->name('home.about.update');
         Route::post('/home/about/delete', 'delete')->name('home.about.delete');
 
-        // Home About Image Route
-        Route::get('/home/about/edit', 'edit')->name('home.about.edit');
-        Route::post('/home/about/image/add', 'imageadd')->name('home.about.image.add');
-        Route::post('/home/about/image/store', 'imagestore')->name('home.about.image.store');
-        Route::post('/home/about/image/update', 'imageupdate')->name('home.about.image.update');
-        Route::delete('/home/about/image/delete', 'imagedelete')->name('home.about.image.delete');
-
     });
 
 });

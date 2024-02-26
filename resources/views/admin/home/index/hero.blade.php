@@ -9,8 +9,22 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body" style="height: 80vh">
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h3 class="mb-sm-0">Edit Hero Section </h3>
 
-                        <h4 class="card-title">Edit Hero Section </h4>
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hero</a></li>
+                                            <li class="breadcrumb-item active">Manage</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
 
                         <form method="post" action="{{ route('hero.update') }}" enctype="multipart/form-data">
                             @csrf
@@ -70,8 +84,11 @@
                                 </div>
                             </div>
                             <!-- end row -->
-
-                            <input type="submit" class="btn btn-info waves-effect waves-light" value="Update Profile">
+                            @if ($hero)
+                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Update">
+                            @else
+                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Create">
+                            @endif
                         </form>
 
                     </div>
