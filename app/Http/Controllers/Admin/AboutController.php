@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\AboutMultiImage;
+use App\Models\Experience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -213,5 +214,94 @@ class AboutController extends Controller
         }
 
         return redirect()->route('home.about.edit')->with($notification);
+    }
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+    public function experience_index()
+    {
+        $experience = Experience::all();
+        return view('admin.about.experience.index', compact('experience'));
+    }
+
+    public function experience_create()
+    {
+        return view('admin.about.experience.create');
+    }
+
+    public function experience_store(Request $request)
+    {
+        $request->validate([
+            'title'       => 'required',
+            'duration'    => 'required',
+            'description' => 'required',
+        ]);
+
+        Experience::create([
+            'title'       => $request->title,
+            'duration'    => $request->duration,
+            'description' => $request->description,
+        ]);
+        $notification = array(
+          'message' => 'Experience Inserted Successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->route('about.experience.index')->with($notification);
+    }
+
+    public function experience_edit($id)
+    {
+        $data = Experience::findOrFail($id);
+        return view('admin.about.experience.edit', compact('data'));
+    }
+
+    public function experience_update(Request $request, $id)
+    {
+        $request->validate([
+            'title'       => 'required',
+            'duration'    => 'required',
+            'description' => 'required',
+        ]);
+
+        $data = Experience::find($id);
+
+        $data->title = $request->title;
+        $data->duration = $request->duration;
+        $data->description = $request->description;
+        $data->save();
+
+        // Success notification
+        $notification = [
+            'message'    => 'Experience updated successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('about.experience.index')->with($notification);
+    }
+
+    public function experience_destroy($id)
+    {
+        $data = Experience::findOrFail($id);
+        $data->delete();
+
+        // Success notification
+        $notification = [
+           'message'    => 'Experience deleteed Successfully',
+            'alert-type' => 'info',
+        ];
+
+        return redirect()->route('about.experience.index')->with($notification);
     }
 }

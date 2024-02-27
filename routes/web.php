@@ -56,6 +56,13 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::put('/about/multi-image/{id}', 'Multi_update')->name('about.multi-image.update');
         Route::delete('/about/multi-image/destroy/{id}', 'Multi_destroy')->name('about.multi-image.destroy');
 
+        // experience Routes
+        Route::get('/about/experience', 'experience_index')->name('about.experience.index');
+        Route::get('/about/experience/create', 'experience_create')->name('about.experience.create');
+        Route::post('/about/experience', 'experience_store')->name('about.experience.store');
+        Route::get('/about/experience/edit/{id}', 'experience_edit')->name('about.experience.edit');
+        Route::put('/about/experience/{id}', 'experience_update')->name('about.experience.update');
+        Route::delete('/about/experience/destroy/{id}', 'experience_destroy')->name('about.experience.destroy');
     });
 
 });

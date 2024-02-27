@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutMultiImage;
+use App\Models\Experience;
 use App\Models\Hero;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class ForntendController extends Controller
     public function about()
     {
         $about = About::first();
-        return view('frontend.about.index', compact('about'));
+        $experience = Experience::all();
+        return view('frontend.about.index', compact('about', 'experience'));
     }
 
     /**
