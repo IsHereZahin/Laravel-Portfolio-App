@@ -26,9 +26,9 @@
 
                         <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             @php
-                            $imageCount = count($multi_image); // Get the number of images from $multi_image
-                            $isHidden = $imageCount >= 7 ? 'hidden' : ''; // Set 'hidden' class if count is 7 or more
-                        @endphp
+                                $imageCount = count($multi_image); // Get the number of images from $multi_image
+                                $isHidden = $imageCount >= 7 ? 'hidden' : ''; // Set 'hidden' class if count is 7 or more
+                            @endphp
 
                         <div class="button-container" style="text-align: right;">
                             <a href="{{ route('about.multi-image.create') }}"
