@@ -29,6 +29,10 @@ class AboutController extends Controller
      */
     public function Multi_store(Request $request)
     {
+        $request->validate([
+            'multi_image' => 'required|image|mimes:jpeg,png,jpg,gif',
+        ]);
+
         $image = null;
         if (!empty($request->multi_image)){
             $image = time().'.'.$request->multi_image->getClientOriginalExtension();
