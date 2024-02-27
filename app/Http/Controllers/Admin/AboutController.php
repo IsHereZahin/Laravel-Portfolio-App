@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\AboutMultiImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -12,34 +13,109 @@ class AboutController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function Multi_index()
     {
-        //
+        $multi_image = AboutMultiImage::all();
+        return view('admin.about.multi_image_index', compact('multi_image'));
+    }
+
+    public function Multi_create()
+    {
+        return view('admin.about.multi_image_create');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function Multi_store(Request $request)
     {
-        //
+        $image = null;
+        if (!empty($request->multi_image)){
+            $image = time().'.'.$request->multi_image->getClientOriginalExtension();
+            $request->multi_image->move(public_path('upload/about/multiimage'), $image);
+        }
+
+        AboutMultiImage::create([
+            'multi_image' => $image,
+        ]);
+
+        $notification = array(
+            'message' => 'Image Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('about.multi-image.index')->with($notification);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function Multi_edit($id)
     {
-        //
+        $multi_image = AboutMultiImage::findOrFail($id);
+        return view('admin.about.multi_image_edit', compact('multi_image'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function Multi_update(Request $request, $id)
     {
-        //
+        // Validate the incoming request data
+        $request->validate([
+            'multi_image' => 'required|image|mimes:jpeg,png,jpg,gif',
+        ]);
+
+        $multi_image = AboutMultiImage::find($id);
+
+        if(!$multi_image) {
+            return redirect()->route('about.multi-image.index')->with('error', 'Multi-image not found');
+        }
+
+        if ($request->hasFile('multi_image')) {
+            $image = time().'.'.$request->multi_image->extension();
+            $request->multi_image->move(public_path('upload/about/multiimage'), $image);
+            // Delete old image
+            if (File::exists(public_path('upload/about/multiimage/'.$multi_image->multi_image))) {
+                File::delete(public_path('upload/about/multiimage/'.$multi_image->multi_image));
+            }
+            // Update multi_image attribute in database
+            $multi_image->multi_image = $image;
+            $multi_image->save();
+        }
+
+        return redirect()->route('about.multi-image.index')->with('success', 'Multi-image updated successfully');
     }
+
+    public function Multi_destroy($id)
+    {
+        $multi_image = AboutMultiImage::findOrFail($id);
+
+        // **Image deletion logic:**
+        $image_path = public_path("upload/about/multiimage/" . $multi_image->image);
+
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+        }
+
+        $multi_image->delete();
+
+        return redirect()->route('about.multi-image.index')->with('success', 'Image deleted successfully');
+    }
+
+
+
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.

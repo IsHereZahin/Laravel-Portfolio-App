@@ -48,6 +48,14 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::post('/home/about/update', 'update')->name('home.about.update');
         Route::post('/home/about/delete', 'delete')->name('home.about.delete');
 
+        // Multi Image
+        Route::get('/about/multi-image', 'Multi_index')->name('about.multi-image.index');
+        Route::get('/about/multi-image/create', 'Multi_create')->name('about.multi-image.create');
+        Route::post('/about/multi-image', 'Multi_store')->name('about.multi-image.store');
+        Route::get('/about/multi-image/edit/{id}', 'Multi_edit')->name('about.multi-image.edit');
+        Route::put('/about/multi-image/{id}', 'Multi_update')->name('about.multi-image.update');
+        Route::delete('/about/multi-image/destroy/{id}', 'Multi_destroy')->name('about.multi-image.destroy');
+
     });
 
 });

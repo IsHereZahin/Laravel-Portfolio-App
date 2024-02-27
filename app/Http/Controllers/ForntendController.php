@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\AboutMultiImage;
 use App\Models\Hero;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class ForntendController extends Controller
     {
         $hero = Hero::first();
         $about = About::first();
-        return view('frontend.index', compact('hero', 'about'));
+        $images = AboutMultiImage::all();
+        return view('frontend.index', compact('hero', 'about', 'images'));
     }
 
     /**
