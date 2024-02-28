@@ -39,7 +39,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::controller(HeroController::class)->group(function() {
         Route::get('/hero/edit', 'edit')->name('hero.edit');
         Route::post('/hero/update', 'update')->name('hero.update');
-        Route::delete('/hero/delete', 'destroy')->name('admin.hero.destroy');
+        Route::delete('/hero/destroy', 'destroy')->name('hero.destroy');
     });
 
     // About Route

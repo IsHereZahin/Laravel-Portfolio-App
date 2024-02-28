@@ -74,8 +74,13 @@ class AboutController extends Controller
         $multi_image = AboutMultiImage::find($id);
 
         if(!$multi_image) {
-            return redirect()->route('about.multi-image.index')->with('error', 'Multi-image not found');
+            return redirect()->route('about.multi-image.index')->with('info', 'Multi-image not found');
         }
+
+        $notification = [
+            'message'    => 'Image updated successfully',
+             'alert-type' => 'info',
+        ];
 
         if ($request->hasFile('multi_image')) {
             $image = time().'.'.$request->multi_image->extension();
@@ -89,23 +94,31 @@ class AboutController extends Controller
             $multi_image->save();
         }
 
-        return redirect()->route('about.multi-image.index')->with('success', 'Multi-image updated successfully');
+        return redirect()->route('about.multi-image.index')->with($notification);
     }
 
     public function Multi_destroy($id)
     {
-        $multi_image = AboutMultiImage::findOrFail($id);
+        $data = AboutMultiImage::query()->find($id);
 
-        // **Image deletion logic:**
-        $image_path = public_path("upload/about/multiimage/" . $multi_image->image);
+        $notification = [
+            'message'    => 'Image deleted successfully',
+             'alert-type' => 'info',
+         ];
 
-        if (File::exists($image_path)) {
-            File::delete($image_path);
+        // Check if image exists before deletion
+        if (!empty($data->multi_image)) {
+            if (File::exists(public_path('upload/about/multiimage/' . $data->multi_image))) {
+                File::delete(public_path('upload/about/multiimage/' . $data->multi_image));
+            } else {
+                // Handle non-existent file case (optional: log or notify)
+                return redirect()->route('about.multi-image.index')->with($notification);
+            }
         }
 
-        $multi_image->delete();
+        AboutMultiImage::query()->find($id)->delete();
 
-        return redirect()->route('about.multi-image.index')->with('success', 'Image deleted successfully');
+        return redirect()->route('about.multi-image.index')->with($notification);
     }
 
 
@@ -195,24 +208,17 @@ class AboutController extends Controller
      */
     public function delete()
     {
+
+        $data = About::query()->first();
+        File::delete(public_path('upload/about/index/'.$data->image));
+
+        About::query()->first()->delete();
+
         // Find the first About record and delete it
-        $about = About::first();
-        if ($about) {
-            $about->delete();
-
-            // Success notification
-            $notification = [
-                'message'    => 'Data deleteed Successfully',
-                'alert-type' => 'success',
-            ];
-        } else {
-            // If no About record found
-            $notification = [
-                'message'    => 'No data found to delete',
-                'alert-type' => 'info',
-            ];
-        }
-
+        $notification = [
+            'message'    => 'Data deleteed Successfully',
+            'alert-type' => 'success',
+        ];
         return redirect()->route('home.about.edit')->with($notification);
     }
 

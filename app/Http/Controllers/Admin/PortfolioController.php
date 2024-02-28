@@ -134,8 +134,11 @@ class PortfolioController extends Controller
      */
     public function destroy(string $id)
     {
-        $Portfolio = Portfolio::findOrFail($id);
-        $Portfolio->delete();
+        $Portfolio = Portfolio::query()->find($id);
+        Portfolio::query()->find($id)->delete();
+
+        // dd ($data);
+        File::delete(public_path('upload/portfolio/'.$Portfolio->image));
 
         // Deleted notification
         $notification = [

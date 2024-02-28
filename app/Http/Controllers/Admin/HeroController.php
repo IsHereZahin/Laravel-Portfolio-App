@@ -72,8 +72,17 @@ class HeroController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
-        //
+        $data = Hero::query()->first();
+        File::delete(public_path('upload/index/hero/'.$data->hero_image));
+
+        Hero::query()->first()->delete();
+
+        $notification = [
+          'message'    => 'Your request is complete',
+            'alert-type' => 'info',
+        ];
+        return redirect()->route('hero.edit')->with($notification);
     }
 }

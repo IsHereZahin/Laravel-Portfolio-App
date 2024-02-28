@@ -84,12 +84,26 @@
                                 </div>
                             </div>
                             <!-- end row -->
+
                             @if ($hero)
-                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Update">
-                            @else
-                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Create">
-                            @endif
+                                <div class="row mb-3">
+                                    <div class="col-sm-10 offset-sm-2">
+                                        <input type="submit" class="btn btn-info waves-effect waves-light" value="Update">
                         </form>
+                                        <form method="post" action="{{ route('hero.destroy') }}" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="submit" class="btn btn-danger waves-effect waves-light" value="Delete">
+                                        </form>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="row mb-3">
+                                    <div class="col-sm-10 offset-sm-2">
+                                        <input type="submit" class="btn btn-info waves-effect waves-light" value="Create">
+                                    </div>
+                                </div>
+                            @endif
 
                     </div>
                 </div>
