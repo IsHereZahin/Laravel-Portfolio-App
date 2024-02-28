@@ -39,8 +39,8 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-mail-send-line"></i>
-                        <span>About Page Setup</span>
+                        <i class="ri-menu-2-line"></i>
+                        <span>About</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('home.about.edit') }}">About Page</a></li>
@@ -50,9 +50,9 @@
                 </li>
 
                 <li>
-                    <a href="calendar.html" class=" waves-effect">
-                        <i class="ri-calendar-2-line"></i>
-                        <span>Calendar</span>
+                    <a href="{{ route('portfolio.index') }}" class=" waves-effect">
+                        <i class="ri-article-line"></i>
+                        <span>Portfolio</span>
                     </a>
                 </li>
 

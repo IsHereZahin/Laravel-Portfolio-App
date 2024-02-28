@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\ForntendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +65,17 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::put('/about/experience/{id}', 'experience_update')->name('about.experience.update');
         Route::delete('/about/experience/destroy/{id}', 'experience_destroy')->name('about.experience.destroy');
     });
+
+    // Portfolio Route
+    Route::controller(PortfolioController::class)->group(function() {
+        Route::get('portfolio/index', 'index')->name('portfolio.index');
+        Route::get('portfolio/create', 'create')->name('portfolio.create');
+        Route::post('portfolio/store','store')->name('portfolio.store');
+        Route::get('portfolio/edit/{id}', 'edit')->name('portfolio.edit');
+        Route::put('portfolio/update/{id}', 'update')->name('portfolio.update');
+        Route::delete('portfolio/{id}', 'destroy')->name('portfolio.destroy');
+    });
+
 
 });
 
