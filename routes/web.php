@@ -25,6 +25,8 @@ Route::get('/', function () {
 Route::controller(ForntendController::class)->group(function() {
     Route::get('', 'index')->name('index');
     Route::get('/about', 'about')->name('about');
+    Route::get('/portfolio', 'portfolio')->name('portfolio');
+    Route::get('/portfolio/details/{id}', 'portfolio_details')->name('portfolio.details');
 
 });
 

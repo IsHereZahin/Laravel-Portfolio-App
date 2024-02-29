@@ -54,7 +54,7 @@
                                         <option value="mobileapp"     {{ $Portfolio->category === 'mobileapp' ? 'selected' : '' }}>Mobile App</option>
                                         <option value="websitedesign" {{ $Portfolio->category === 'websitedesign' ? 'selected' : '' }}>Website Design</option>
                                         <option value="uiux"          {{ $Portfolio->category === 'uiux' ? 'selected' : '' }}>UI/UX</option>
-                                        <option value="blog"          {{ $Portfolio->category === 'blog' ? 'selected' : '' }}>Blog</option>
+                                        <option value="other"          {{ $Portfolio->category === 'other' ? 'selected' : '' }}>Other</option>
                                     </select>
                                 </div>
                             </div>

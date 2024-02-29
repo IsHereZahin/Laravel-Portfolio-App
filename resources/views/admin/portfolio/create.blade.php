@@ -53,7 +53,7 @@
                                         <option value="mobileapp">Mobile App</option>
                                         <option value="websitedesign">Website Design</option>
                                         <option value="uiux">UI/UX</option>
-                                        <option value="blog">Blog</option>
+                                        <option value="other">Other</option>
                                     </select>
                                 </div>
                             </div>

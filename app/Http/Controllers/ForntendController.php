@@ -6,6 +6,7 @@ use App\Models\About;
 use App\Models\AboutMultiImage;
 use App\Models\Experience;
 use App\Models\Hero;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
 
 class ForntendController extends Controller
@@ -18,7 +19,8 @@ class ForntendController extends Controller
         $hero = Hero::first();
         $about = About::first();
         $images = AboutMultiImage::all();
-        return view('frontend.index', compact('hero', 'about', 'images'));
+        $portfolio = Portfolio::all();
+        return view('frontend.index', compact('hero', 'about', 'images', 'portfolio'));
     }
 
     /**
@@ -32,19 +34,21 @@ class ForntendController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * portfolio
      */
-    public function store(Request $request)
+    public function portfolio()
     {
-        //
+        $portfolio = Portfolio::all();
+        return view('frontend.portfolio.all_portfolio', compact('portfolio'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function portfolio_details(string $id)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        return view('frontend.portfolio.portfolio_details', compact('portfolio'));
     }
 
     /**
