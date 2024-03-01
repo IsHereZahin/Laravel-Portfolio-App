@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\Admin\ClientsFeedbackController;
 use App\Http\Controllers\ForntendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -76,6 +77,16 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('portfolio/edit/{id}', 'edit')->name('portfolio.edit');
         Route::put('portfolio/update/{id}', 'update')->name('portfolio.update');
         Route::delete('portfolio/{id}', 'destroy')->name('portfolio.destroy');
+    });
+
+    // Clients feedback Route
+    Route::controller(ClientsFeedbackController::class)->group(function() {
+        Route::get('clients/feedback', 'index')->name('feedback.index');
+        Route::get('clients/feedback/create', 'create')->name('feedback.create');
+        Route::post('clients/feedback','store')->name('feedback.store');
+        Route::get('clients/feedback/edit/{id}', 'edit')->name('feedback.edit');
+        Route::put('clients/feedback/{id}', 'update')->name('feedback.update');
+        Route::delete('clients/feedback/{id}', 'destroy')->name('feedback.destroy');
     });
 
 

@@ -56,6 +56,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('feedback.index') }}" class=" waves-effect">
+                        <i class="ri-mail-check-line"></i>
+                        <span>Feedback</span>
+                    </a>
+                </li>
+
                 <li class="menu-title">Pages</li>
 
                 <li>

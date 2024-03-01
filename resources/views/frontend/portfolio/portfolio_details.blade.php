@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-8 col-md-10">
                 <div class="breadcrumb__wrap__content">
-                    <h2 class="title">{{ $portfolio->name }} Details</h2>
+                    <h2 class="title">{{ $portfolio->name }}</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="services__details__content">
                     <h2 class="title">{{ $portfolio->title }}</h2>
-                    <p>{{ $portfolio->description }}</p>
+                    <p>{!! $portfolio->description !!}</p>
                     <h2 class="small-title">Overview of {{ $portfolio->title }}</h2>
                     <p>{{ $portfolio->short_desc }}</p>
                 </div>
