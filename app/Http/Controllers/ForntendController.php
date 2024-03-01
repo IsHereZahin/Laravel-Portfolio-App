@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutMultiImage;
+use App\Models\ClientsFeedback;
 use App\Models\Experience;
 use App\Models\Hero;
 use App\Models\Portfolio;
@@ -20,7 +21,8 @@ class ForntendController extends Controller
         $about = About::first();
         $images = AboutMultiImage::all();
         $portfolio = Portfolio::all();
-        return view('frontend.index', compact('hero', 'about', 'images', 'portfolio'));
+        $feedback = ClientsFeedback::all();
+        return view('frontend.index', compact('hero', 'about', 'images', 'portfolio', 'feedback'));
     }
 
     /**
@@ -30,7 +32,8 @@ class ForntendController extends Controller
     {
         $about = About::first();
         $experience = Experience::all();
-        return view('frontend.about.index', compact('about', 'experience'));
+        $feedback = ClientsFeedback::all();
+        return view('frontend.about.index', compact('about', 'experience', 'feedback'));
     }
 
     /**

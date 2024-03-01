@@ -421,34 +421,55 @@
                                         <h2 class="title">Some happy clients feedback</h2>
                                     </div>
                                     <div class="testimonial__two__active">
-                                        <div class="testimonial__item">
-                                            <div class="testimonial__icon">
-                                                <i class="fas fa-quote-left"></i>
-                                            </div>
-                                            <div class="testimonial__content">
-                                                <p>We are motivated by the satisfaction of our clients. Put your trust in us &share in our H.Spond Asset Management is made up of a team of expert, committed and experienced people with a passion for financial markets. Our goal is to achieve continuous.</p>
-                                                <div class="testimonial__avatar">
-                                                    <span>WPBakery/ uSA</span>
-                                                    <div class="testi__avatar__img">
-                                                        <img src="{{ asset('frontend/assets/img/images/testi_avatar01.png') }}" alt="">
+
+                                        @if ($feedback && count($feedback) > 0)
+                                            @foreach ($feedback as $data)
+                                                <div class="testimonial__item">
+                                                    <div class="testimonial__icon">
+                                                        <i class="fas fa-quote-left"></i>
+                                                    </div>
+                                                    <div class="testimonial__content">
+                                                        <p>{{ $data->message }}</p>
+                                                        <div class="testimonial__avatar">
+                                                            <span>{{ $data->name }}</span>
+                                                            <div class="testi__avatar__img">
+                                                                <img src="{{ asset('upload/clients_feedback/' . $data->image) }}" alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="testimonial__item">
+                                                <div class="testimonial__icon">
+                                                    <i class="fas fa-quote-left"></i>
+                                                </div>
+                                                <div class="testimonial__content">
+                                                    <p>We are motivated by the satisfaction of our clients. Put your trust in us &share in our H.Spond Asset Management is made up of a team of expert, committed and experienced people with a passion for financial markets. Our goal is to achieve continuous.</p>
+                                                    <div class="testimonial__avatar">
+                                                        <span>WPBakery/ uSA</span>
+                                                        <div class="testi__avatar__img">
+                                                            <img src="{{ asset('frontend/assets/img/images/testi_avatar01.png') }}" alt="">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="testimonial__item">
-                                            <div class="testimonial__icon">
-                                                <i class="fas fa-quote-left"></i>
-                                            </div>
-                                            <div class="testimonial__content">
-                                                <p>We are motivated by the satisfaction of our clients. Put your trust in us &share in our H.Spond Asset Management is made up of a team of expert, committed and experienced people with a passion for financial markets. Our goal is to achieve continuous.</p>
-                                                <div class="testimonial__avatar">
-                                                    <span>Adobe Photoshop</span>
-                                                    <div class="testi__avatar__img">
-                                                        <img src="{{ asset('frontend/assets/img/images/testi_avatar02.png') }}" alt="">
+                                            <div class="testimonial__item">
+                                                <div class="testimonial__icon">
+                                                    <i class="fas fa-quote-left"></i>
+                                                </div>
+                                                <div class="testimonial__content">
+                                                    <p>The satisfaction of our clients. Put your trust in us &share in our H.Spond Asset Management is made up of a team of expert, committed and experienced people with a passion for financial markets. Our goal is to achieve continuous.</p>
+                                                    <div class="testimonial__avatar">
+                                                        <span>Figma</span>
+                                                        <div class="testi__avatar__img">
+                                                            <img src="{{ asset('frontend/assets/img/images/testi_avatar02.png') }}" alt="">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
+
                                     </div>
                                     <div class="testimonial__arrow"></div>
                                 </div>
