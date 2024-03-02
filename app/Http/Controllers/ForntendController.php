@@ -50,7 +50,7 @@ class ForntendController extends Controller
      */
     public function portfolio_details(string $id)
     {
-        $portfolio = Portfolio::find($id);
+        $portfolio = Portfolio::findOrFail($id);
         return view('frontend.portfolio.portfolio_details', compact('portfolio'));
     }
 
