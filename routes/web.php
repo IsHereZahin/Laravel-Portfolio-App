@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\ClientsFeedbackController;
 use App\Http\Controllers\ForntendController;
@@ -89,7 +90,16 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::delete('clients/feedback/{id}', 'destroy')->name('feedback.destroy');
     });
 
-
+    // Blog Category
+    Route::controller(BlogCategoryController::class)->group(function() {
+        Route::get('blog/category/index', 'index')->name('blog.category.index');
+        Route::get('blog/category/create', 'create')->name('blog.category.create');
+        Route::post('blog/category/store','store')->name('blog.category.store');
+        Route::get('blog/category/edit/{id}', 'edit')->name('blog.category.edit');
+        Route::put('blog/category/update/{id}', 'update')->name('blog.category.update');
+        Route::delete('blog/category/{id}', 'destroy')->name('blog.category.destroy');
+    });
+    
 });
 
  // Admin All Route
