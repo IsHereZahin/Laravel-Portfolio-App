@@ -71,7 +71,7 @@ class ClientsFeedbackController extends Controller
      */
     public function edit(string $id)
     {
-        $feedback = ClientsFeedback::find($id);
+        $feedback = ClientsFeedback::findOrFail($id);
         return view('admin.clients_feedback.edit', compact('feedback'));
     }
 

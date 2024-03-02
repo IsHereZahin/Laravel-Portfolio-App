@@ -77,7 +77,7 @@ class PortfolioController extends Controller
      */
     public function edit(string $id)
     {
-        $Portfolio = Portfolio::find($id);
+        $Portfolio = Portfolio::findOrFail($id);
         return view('admin.portfolio.edit', compact('Portfolio'));
     }
 
