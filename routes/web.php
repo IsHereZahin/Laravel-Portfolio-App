@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\ClientsFeedbackController;
 use App\Http\Controllers\ForntendController;
@@ -99,6 +100,17 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::put('blog/category/update/{id}', 'update')->name('blog.category.update');
         Route::delete('blog/category/{id}', 'destroy')->name('blog.category.destroy');
     });
+
+    // Blog
+    Route::controller(BlogController::class)->group(function() {
+        Route::get('blog/index', 'index')->name('blog.index');
+        Route::get('blog/create', 'create')->name('blog.create');
+        Route::post('blog/store','store')->name('blog.store');
+        Route::get('blog/edit/{id}', 'edit')->name('blog.edit');
+        Route::put('blog/update/{id}', 'update')->name('blog.update');
+        Route::delete('blog/{id}', 'destroy')->name('blog.destroy');
+    });
+
     
 });
 

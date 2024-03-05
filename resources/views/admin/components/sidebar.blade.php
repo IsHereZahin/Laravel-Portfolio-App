@@ -63,6 +63,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('blog.category.index') }}">Category</a></li>
+                        <li><a href="{{ route('blog.index') }}">Blog</a></li>
                     </ul>
                 </li>
 

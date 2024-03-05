@@ -15,7 +15,7 @@ class BlogCategoryController extends Controller
     {
         $blog_category = BlogCategory::all();
         $i = 1;
-        return view('admin.blog.category_index', compact('blog_category', 'i'));
+        return view('admin.blog.category.category_index', compact('blog_category', 'i'));
     }
 
     /**
@@ -23,7 +23,7 @@ class BlogCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.blog.category_create');
+        return view('admin.blog.category.category_create');
     }
 
     /**
@@ -55,7 +55,7 @@ class BlogCategoryController extends Controller
     public function edit(string $id)
     {
         $blog_category = BlogCategory::findOrFail($id);
-        return view('admin.blog.category_edit', compact('blog_category'));
+        return view('admin.blog.category.category_edit', compact('blog_category'));
     }
 
     /**
