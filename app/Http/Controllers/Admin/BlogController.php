@@ -77,5 +77,70 @@ class BlogController extends Controller
      * @param string $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+    public function edit(string $id)
+    {
+        $blog = Blog::findOrFail($id);
+        $categories = BlogCategory::all();
+        return view('admin.blog.edit', compact('blog', 'categories'));
+    }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param string $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'blog_category_id'  => 'required',
+            'title'             => 'required',
+            'tags'              => 'required',
+            'description'       => 'required',
+            'image'             => 'nullable|image|mimes:jpeg,png,jpg,gif',
+        ]);
+
+        $blog = Blog::find($id);
+
+        if(!empty($request->image)){
+            $image = time().'.'.$request->image->extension();
+            $request->image->move(public_path('upload/blog'), $image);
+
+            #delete old image
+            if(File::exists(public_path('upload/blog/'.$blog->image))) {
+                File::delete(public_path('upload/blog/'.$blog->image));
+            }
+        }
+        else
+        $image = $blog->image;
+
+        $blog->update([
+            'blog_category_id'  => $request->blog_category_id,
+            'title'             => $request->title,
+            'tags'              => $request->tags,
+            'description'       => $request->description,
+            'image'             => $image,
+        ]);
+
+        return redirect()->route('blog.index')
+            ->with('success', 'Blog updated successfully.');
+    }
+
+    public function destroy(string $id)
+    {
+        $blog = Blog::findOrFail($id);
+
+        // Delete the associated image if it exists
+        if ($blog->image) {
+            if (File::exists(public_path('upload/blog/' . $blog->image))) {
+                File::delete(public_path('upload/blog/' . $blog->image));
+            }
+        }
+
+        $blog->delete();
+
+        return redirect()->route('blog.index')
+            ->with('success', 'Blog deleted successfully.');
+    }
 }
