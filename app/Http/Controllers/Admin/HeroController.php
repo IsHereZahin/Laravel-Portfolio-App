@@ -80,8 +80,8 @@ class HeroController extends Controller
         Hero::query()->first()->delete();
 
         $notification = [
-          'message'    => 'Your request is complete',
-            'alert-type' => 'info',
+          'message'    => 'Data deleted successfully',
+            'alert-type' => 'warning',
         ];
         return redirect()->route('hero.edit')->with($notification);
     }

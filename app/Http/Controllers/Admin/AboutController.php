@@ -103,7 +103,7 @@ class AboutController extends Controller
 
         $notification = [
             'message'    => 'Image deleted successfully',
-             'alert-type' => 'info',
+             'alert-type' => 'warning',
          ];
 
         // Check if image exists before deletion
@@ -217,7 +217,7 @@ class AboutController extends Controller
         // Find the first About record and delete it
         $notification = [
             'message'    => 'Data deleteed Successfully',
-            'alert-type' => 'success',
+            'alert-type' => 'warning',
         ];
         return redirect()->route('home.about.edit')->with($notification);
     }
@@ -262,7 +262,7 @@ class AboutController extends Controller
         ]);
         $notification = array(
           'message' => 'Experience Inserted Successfully',
-            'alert-type' => 'info'
+            'alert-type' => 'success'
         );
         return redirect()->route('about.experience.index')->with($notification);
     }
@@ -291,7 +291,7 @@ class AboutController extends Controller
         // Success notification
         $notification = [
             'message'    => 'Experience updated successfully',
-            'alert-type' => 'success',
+            'alert-type' => 'info',
         ];
 
         return redirect()->route('about.experience.index')->with($notification);
@@ -305,7 +305,7 @@ class AboutController extends Controller
         // Success notification
         $notification = [
            'message'    => 'Experience deleteed Successfully',
-            'alert-type' => 'info',
+            'alert-type' => 'warning',
         ];
 
         return redirect()->route('about.experience.index')->with($notification);

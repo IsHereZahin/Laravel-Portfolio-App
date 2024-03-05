@@ -58,7 +58,7 @@ class PortfolioController extends Controller
         // Success notification
         $notification = [
             'message'    => 'Portfolio added successfully',
-            'alert-type' => 'info',
+            'alert-type' => 'success',
         ];
 
         return redirect()->route('portfolio.index')->with($notification);
@@ -143,7 +143,7 @@ class PortfolioController extends Controller
         // Deleted notification
         $notification = [
            'message'    => 'Portfolio deleted successfully',
-            'alert-type' => 'info',
+            'alert-type' => 'warning',
         ];
 
         return redirect()->route('portfolio.index')->with($notification);

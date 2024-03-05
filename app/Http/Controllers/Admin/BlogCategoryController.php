@@ -37,8 +37,13 @@ class BlogCategoryController extends Controller
 
         BlogCategory::create($request->all());
 
+        $notification = [
+            'message' => 'Blog Ctaegory created successfully',
+            'alert-type' => 'success',
+        ];
+
         return redirect()->route('blog.category.index')
-            ->with('info', 'Blog Category created successfully.');
+            ->with($notification);
     }
 
     /**
@@ -70,8 +75,13 @@ class BlogCategoryController extends Controller
         $blog_category = BlogCategory::findOrFail($id);
         $blog_category->update($request->all());
 
+        $notification = [
+            'message' => 'Blog Ctaegory updated successfully',
+            'alert-type' => 'info',
+        ];
+
         return redirect()->route('blog.category.index')
-            ->with('info', 'Blog Category updated successfully.');
+            ->with($notification);
     }
 
     /**
@@ -82,7 +92,12 @@ class BlogCategoryController extends Controller
         $blog_category = BlogCategory::findOrFail($id);
         $blog_category->delete();
 
+        $notification = [
+            'message' => 'Blog Category deleted successfully',
+            'alert-type' => 'warning',
+        ];
+
         return redirect()->route('blog.category.index')
-            ->with('info', 'Blog Category deleted successfully.');
+            ->with($notification);
     }
 }

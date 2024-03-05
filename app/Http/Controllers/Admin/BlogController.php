@@ -66,8 +66,12 @@ class BlogController extends Controller
             'created_at'        => Carbon::now(),
         ]);
 
+        $notification = [
+            'message' => 'Blog created successfully',
+            'alert-type' => 'success',
+        ];
         return redirect()->route('blog.index')
-            ->with('success', 'Blog created successfully.');
+            ->with($notification);
     }
 
 
@@ -123,8 +127,12 @@ class BlogController extends Controller
             'image'             => $image,
         ]);
 
+        $notification = [
+            'message' => 'Blog updated successfully',
+            'alert-type' => 'info',
+        ];
         return redirect()->route('blog.index')
-            ->with('success', 'Blog updated successfully.');
+            ->with($notification);
     }
 
     public function destroy(string $id)
@@ -140,7 +148,12 @@ class BlogController extends Controller
 
         $blog->delete();
 
+        $notification = [
+            'message' => 'Blog deleted successfully',
+            'alert-type' => 'warning',
+        ];
+
         return redirect()->route('blog.index')
-            ->with('success', 'Blog deleted successfully.');
+            ->with($notification);
     }
 }

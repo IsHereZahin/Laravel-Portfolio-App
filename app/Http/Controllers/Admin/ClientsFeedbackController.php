@@ -51,8 +51,8 @@ class ClientsFeedbackController extends Controller
         ]);
 
         $notification = [
-            'message'    => 'Client feedback added successfully',
-            'alert-type' => 'info',
+            'message'    => 'Feedback added successfully',
+            'alert-type' => 'success',
         ];
 
         return redirect()->route('feedback.index')->with($notification);
@@ -105,7 +105,7 @@ class ClientsFeedbackController extends Controller
         ]);
 
         $notification = [
-            'message'    => 'Client feedback updated successfully',
+            'message'    => 'Feedback updated successfully',
             'alert-type' => 'info',
         ];
 
@@ -125,7 +125,7 @@ class ClientsFeedbackController extends Controller
         // Deleted notification
         $notification = [
             'message'    => 'Feedback deleted successfully',
-            'alert-type' => 'info',
+            'alert-type' => 'warning',
         ];
 
         return redirect()->route('feedback.index')->with($notification);
