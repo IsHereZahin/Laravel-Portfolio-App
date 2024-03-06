@@ -22,10 +22,10 @@
                                                     <li><a href="#">Portfolio Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="menu-item-has-children"><a href="#">Our Blog</a>
+                                            <li class="menu-item-has-children"><a href="{{ route('blog') }}">Our Blog</a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="blog.html">Our News</a></li>
-                                                    <li><a href="blog-details.html">News Details</a></li>
+                                                    <li><a href="{{ route('blog') }}">Our News</a></li>
+                                                    <li><a href="#">News Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="contact.html">contact me</a></li>

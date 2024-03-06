@@ -54,6 +54,13 @@
               </div>
 
               <div class="row mb-3">
+                <label for="example-text-input" class="col-sm-2 col-form-label">Short Description</label>
+                <div class="col-sm-10">
+                  <input name="short_description" value="{{ $blog->short_description }}" class="form-control" type="text" id="example-text-input" required>
+                </div>
+              </div>
+
+              <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Blog Description</label>
                 <div class="col-sm-10">
                   <textarea id="elm1" name="description">{{ old('description', $blog->description) }}</textarea>

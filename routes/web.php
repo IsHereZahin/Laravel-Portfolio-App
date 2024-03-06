@@ -30,6 +30,8 @@ Route::controller(ForntendController::class)->group(function() {
     Route::get('/about', 'about')->name('about');
     Route::get('/portfolio', 'portfolio')->name('portfolio');
     Route::get('/portfolio/details/{id}', 'portfolio_details')->name('portfolio.details');
+    Route::get('/blog', 'blog')->name('blog');
+    Route::get('/blog/details/{id}', 'blog_details')->name('blog.details');
 
 });
 
@@ -111,7 +113,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::delete('blog/{id}', 'destroy')->name('blog.destroy');
     });
 
-    
+
 });
 
  // Admin All Route

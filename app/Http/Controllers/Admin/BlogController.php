@@ -46,6 +46,7 @@ class BlogController extends Controller
             'blog_category_id'  => 'required',
             'title'             => 'required',
             'tags'              => 'required',
+            'short_description' => 'required',
             'description'       => 'required',
             'image'             => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
@@ -61,6 +62,7 @@ class BlogController extends Controller
             'blog_category_id'  => $request->blog_category_id,
             'title'             => $request->title,
             'tags'              => $request->tags,
+            'short_description' => $request->short_description,
             'description'       => $request->description,
             'image'             => $image,
             'created_at'        => Carbon::now(),
@@ -101,6 +103,7 @@ class BlogController extends Controller
             'blog_category_id'  => 'required',
             'title'             => 'required',
             'tags'              => 'required',
+            'short_description' => 'required',
             'description'       => 'required',
             'image'             => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
@@ -123,6 +126,7 @@ class BlogController extends Controller
             'blog_category_id'  => $request->blog_category_id,
             'title'             => $request->title,
             'tags'              => $request->tags,
+            'short_description' => $request->short_description,
             'description'       => $request->description,
             'image'             => $image,
         ]);
