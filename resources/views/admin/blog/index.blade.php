@@ -24,7 +24,11 @@
                         </div>
 
                         <div class="button-container" style="text-align: right;">
+                            @if ($blog_category && count($blog_category) > 0)
                             <a href="{{ route('blog.create') }}" class="btn btn-info sm" style="margin-bottom: 10px" title="Add Blog">Create Blog</a>
+                            @else
+                            <a href="{{ route('blog.category.index') }}" class="btn btn-info sm" style="margin-bottom: 10px" title="Add Blog Category">Create Blog Category</a>
+                            @endif
                         </div>
 
                         @if ($blog && count($blog) > 0)

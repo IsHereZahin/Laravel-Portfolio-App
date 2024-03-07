@@ -19,8 +19,9 @@ class BlogController extends Controller
     public function index()
     {
         $blog = Blog::latest()->get();
+        $blog_category = BlogCategory::all();
         $i = 1;
-        return view('admin.blog.index', compact('blog', 'i'));
+        return view('admin.blog.index', compact('blog', 'i', 'blog_category'));
     }
 
     /**

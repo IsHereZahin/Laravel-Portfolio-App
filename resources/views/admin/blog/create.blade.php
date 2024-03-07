@@ -24,12 +24,9 @@
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Blog Category Name</label>
                                 <div class="col-sm-10">
                                     <select name="blog_category_id" class="form-select" aria-label="Default select example">
-
-                                        <option selected="">Select category</option>
                                         @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->blog_category }}</option>
                                         @endforeach
-
                                     </select>
                                 </div>
                             </div>
@@ -70,7 +67,7 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Blog Image </label>
                                 <div class="col-sm-10">
-                                    <input name="image" class="form-control" type="file" id="image">
+                                    <input name="image" class="form-control" type="file" id="image" required>
                                 </div>
                             </div>
                             <!-- end row -->

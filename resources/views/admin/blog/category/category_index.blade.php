@@ -50,7 +50,7 @@
                                                 <form action="{{ route('blog.category.destroy', $data->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete Data" onclick="return confirm('Are you sure you want to delete this item?')">
+                                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete Data" onclick="return confirm('This category is essential for the blog! Are you sure you want to delete this item?')">
                                                         <i class="fas fa-trash-alt"> Delete</i>
                                                     </button>
                                                 </form>
