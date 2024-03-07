@@ -37,7 +37,8 @@ class ForntendController extends Controller
         $about = About::first();
         $experience = Experience::all();
         $feedback = ClientsFeedback::all();
-        return view('frontend.about.index', compact('about', 'experience', 'feedback'));
+        $blogs      = Blog::latest()->limit(3)->get();
+        return view('frontend.about.index', compact('about', 'experience', 'feedback', 'blogs'));
     }
 
     /**
