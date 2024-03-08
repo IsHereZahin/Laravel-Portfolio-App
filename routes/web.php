@@ -33,6 +33,7 @@ Route::controller(ForntendController::class)->group(function() {
     Route::get('/portfolio/details/{id}', 'portfolio_details')->name('portfolio.details');
     Route::get('/blog', 'blog')->name('blog');
     Route::get('/blog/details/{id}', 'blog_details')->name('blog.details');
+    Route::get('/experience/blog/details/{id}', 'experience_details')->name('experience.details');
 
 });
 

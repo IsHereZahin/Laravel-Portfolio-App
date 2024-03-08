@@ -8,6 +8,7 @@ use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\ClientsFeedback;
 use App\Models\Experience;
+use App\Models\ExperienceBlog;
 use App\Models\Hero;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class ForntendController extends Controller
         $portfolio  = Portfolio::all();
         $feedback   = ClientsFeedback::all();
         $blogs      = Blog::latest()->limit(3)->get();
-        return view('frontend.index', compact('hero', 'about', 'images', 'portfolio', 'feedback', 'blogs' ));
+        $experience = ExperienceBlog::latest()->limit(4)->get();
+        return view('frontend.index', compact('hero', 'about', 'images', 'portfolio', 'feedback', 'blogs', 'experience' ));
     }
 
     /**
@@ -105,12 +107,11 @@ class ForntendController extends Controller
         return view('frontend.blog.blog_details', compact('blog', 'uniqueTags', 'recentblogs', 'blogcategory'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function experience_details(string $id)
     {
-        //
+        $experience = ExperienceBlog::findOrFail($id);
+        return view('frontend.experience.blog_details', compact('experience'));
+
     }
 
     /**
