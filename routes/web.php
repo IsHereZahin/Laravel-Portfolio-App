@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\ClientsFeedbackController;
+use App\Http\Controllers\Admin\ExperienceBlogController;
 use App\Http\Controllers\ForntendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -81,6 +82,16 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('portfolio/edit/{id}', 'edit')->name('portfolio.edit');
         Route::put('portfolio/update/{id}', 'update')->name('portfolio.update');
         Route::delete('portfolio/{id}', 'destroy')->name('portfolio.destroy');
+    });
+
+    // Experience Blog Route
+    Route::controller(ExperienceBlogController::class)->group(function() {
+        Route::get('experience/index', 'index')->name('experience.index');
+        Route::get('experience/create', 'create')->name('experience.create');
+        Route::post('experience/store','store')->name('experience.store');
+        Route::get('experience/edit/{id}', 'edit')->name('experience.edit');
+        Route::put('experience/update/{id}', 'update')->name('experience.update');
+        Route::delete('experience/{id}', 'destroy')->name('experience.destroy');
     });
 
     // Clients feedback Route

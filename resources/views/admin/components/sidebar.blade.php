@@ -57,6 +57,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('experience.index') }}" class=" waves-effect">
+                        <i class="ri-article-line"></i>
+                        <span>Experience Blog</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-menu-2-line"></i>
                         <span>Blog</span>
