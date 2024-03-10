@@ -32,7 +32,10 @@
                                 <thead>
                                     <tr>
                                         <th>Sl</th>
+                                        <th>Client</th>
+                                        <th>Date</th>
                                         <th>Title</th>
+                                        <th>Category</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
@@ -42,7 +45,10 @@
                                     @foreach($experience as $data)
                                         <tr>
                                             <td>{{ $i++ }}</td>
+                                            <td>{{ $data->client }}</td>
+                                            <td>{{ $data->date }}</td>
                                             <td>{{ $data->title }}</td>
+                                            <td>{{ $data->category }}</td>
 =                                            <td>
                                                 <img src="{{ asset('upload/experience/blog/' . $data->image) }}" style="width: 60px; height: 60px;">
                                             </td>

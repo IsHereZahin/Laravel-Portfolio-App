@@ -33,8 +33,14 @@ class ExperienceBlogController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'             => 'required',
-            'short_description' => 'required',
+            'client'            =>'required',
+            'category'          =>'required',
+            'project_url'       =>'required',
+            'location'          =>'required',
+            'date'              =>'required',
+            
+            'title'             =>'required',
+            'short_description' =>'required',
             'description'       =>'required',
             'image'             =>'required|image|mimes:jpeg,png,jpg,gif',
         ]);
@@ -48,6 +54,12 @@ class ExperienceBlogController extends Controller
         }
 
         ExperienceBlog::create([
+            'client'            => $request->client,
+            'category'          => $request->category,
+            'project_url'       => $request->project_url,
+            'location'          => $request->location,
+            'date'              => $request->date,
+
             'title'             => $request->title,
             'short_description' => $request->short_description,
             'description'       => $request->description,
@@ -86,6 +98,12 @@ class ExperienceBlogController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
+            'client'            =>'required',
+            'category'          =>'required',
+            'project_url'       =>'required',
+            'location'          =>'required',
+            'date'              =>'required',
+
             'title'             =>'required',
             'short_description' =>'required',
             'description'       =>'required',
@@ -108,6 +126,12 @@ class ExperienceBlogController extends Controller
         $image = $experience->image;
 
         $experience->update([
+            'client'            => $request->client,
+            'category'          => $request->category,
+            'project_url'       => $request->project_url,
+            'location'          => $request->location,
+            'date'              => $request->date,
+
             'title'             => $request->title,
             'short_description' => $request->short_description,
             'description'       => $request->description,

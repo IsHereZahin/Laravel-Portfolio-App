@@ -59,14 +59,13 @@
                     <div class="widget">
                         <h5 class="title">Project Information</h5>
                         <ul class="sidebar__contact__info">
-                            <li><span>Date :</span> January, 2021</li>
-                            <li><span>Location :</span> East Meadow NY 11554</li>
-                            <li><span>Client :</span> American</li>
+                            <li><span>Date :</span>{{ $experience->date }}</li>
+                            <li><span>Location :</span>{{ $experience->location }}</li>
+                            <li><span>Client :</span> {{ $experience->client }}</li>
                             <li class="cagegory"><span>Category :</span>
-                                <a href="experience.html">Photo,</a>
-                                <a href="experience.html">UI/UX</a>
+                                <a href="experience.html">{{ $experience->category }}</a>
                             </li>
-                            <li><span>Project Link :</span> <a href="experience-details.html">https://www.yournews.com/</a></li>
+                            <li><span>Project Link :</span> <a href="{{ $experience->project_url }}">{{ $experience->project_url }}</a></li>
                         </ul>
                     </div>
                     <div class="widget">

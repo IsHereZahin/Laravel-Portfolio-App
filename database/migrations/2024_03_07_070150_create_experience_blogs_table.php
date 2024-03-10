@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('experience_blogs', function (Blueprint $table) {
             $table->id();
+            // Client
+            $table->string('client');
+            $table->string('category');
+            $table->string('project_url');
+            $table->string('location');
+            $table->string('date');
+
+            // Blog
             $table->string('title');
             $table->string('image');
             $table->text('short_description');
